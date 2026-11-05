@@ -1,0 +1,10 @@
+event_time	command_type	argument
+2026-11-05 10:24:21.749516	Query	SELECT * FROM sql_practice.my_actions ORDER BY event_time DESC
+2026-11-05 10:24:21.749138	Query	select @@version_comment limit 1
+2026-11-05 10:23:34.633281	Query	INSERT INTO orders (customer_id, order_date, amount, status) VALUES\n  (1, '2026-10-01', 1500.00, 'paid'),\n  (1, '2026-10-05', 2300.50, 'paid'),\n  (2, '2026-10-03', 800.00, 'new'),\n  (3, '2026-10-07', 4200.00, 'paid'),\n  (3, '2026-10-10', 1100.00, 'cancelled'),\n  (4, '2026-10-12', 950.00, 'new')
+2026-11-05 10:23:30.722963	Query	INSERT INTO customers (name, email, city) VALUES\n  ('Иван Иванов', 'ivan@example.com', 'Москва'),\n  ('Пётр Петров', 'petr@example.com', 'Санкт-Петербург'),\n  ('Мария Сидорова', 'maria@example.com', 'Москва'),\n  ('Алексей Смирнов', 'alex@example.com', 'Казань'),\n  ('Ольга Кузнецова', 'olga@example.com', 'Новосибирск')
+2026-11-05 10:23:30.648210	Query	CREATE TABLE orders (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    customer_id INT NOT NULL,\n    order_date DATE NOT NULL,\n    amount DECIMAL(10, 2) NOT NULL,\n    status VARCHAR(20) DEFAULT 'new',\n    FOREIGN KEY (customer_id) REFERENCES customers(id)\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-05 10:23:30.577998	Query	CREATE TABLE customers (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    name VARCHAR(100) NOT NULL,\n    email VARCHAR(100) NOT NULL UNIQUE,\n    city VARCHAR(100),\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-05 10:23:30.549034	Query	show tables
+2026-11-05 10:23:30.544536	Query	show databases
+2026-11-05 10:23:30.524060	Query	CREATE DATABASE sql_practice\n  CHARACTER SET utf8mb4\n  COLLATE utf8mb4_unicode_ci
