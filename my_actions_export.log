@@ -1,0 +1,46 @@
+event_time	command_type	argument
+2026-11-10 21:13:42.759002	Query	SELECT * FROM sql_practice.my_actions ORDER BY event_time DESC
+2026-11-10 21:13:42.758582	Query	select @@version_comment limit 1
+2026-11-10 21:13:39.969293	Query	SELECT CHECK_OPTION, DEFINER, SECURITY_TYPE,        CHARACTER_SET_CLIENT, COLLATION_CONNECTION FROM information_schema.views WHERE table_name='my_actions' AND table_schema='sql_practice'
+2026-11-10 21:13:39.967270	Query	show tables
+2026-11-10 21:13:39.966854	Query	RELEASE SAVEPOINT sp
+2026-11-10 21:13:39.966667	Query	ROLLBACK TO SAVEPOINT sp
+2026-11-10 21:13:39.966044	Query	SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'sql_practice' AND TABLE_NAME = 'orders'
+2026-11-10 21:13:39.964269	Query	select @@collation_database
+2026-11-10 21:13:39.963926	Query	use `sql_practice`
+2026-11-10 21:13:39.963340	Query	SELECT /*!40001 SQL_NO_CACHE */ * FROM `orders`
+2026-11-10 21:13:39.962264	Query	show fields from `orders`
+2026-11-10 21:13:39.961137	Query	show fields from `orders`
+2026-11-10 21:13:39.960281	Query	show create table `orders`
+2026-11-10 21:13:39.958825	Query	show table status like 'orders'
+2026-11-10 21:13:39.958616	Query	ROLLBACK TO SAVEPOINT sp
+2026-11-10 21:13:39.958061	Query	SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'sql_practice' AND TABLE_NAME = 'my_actions'
+2026-11-10 21:13:39.956505	Query	select @@collation_database
+2026-11-10 21:13:39.956339	Query	use `sql_practice`
+2026-11-10 21:13:39.954362	Query	show create table `my_actions`
+2026-11-10 21:13:39.952863	Query	show table status like 'my\\_actions'
+2026-11-10 21:13:39.952677	Query	ROLLBACK TO SAVEPOINT sp
+2026-11-10 21:13:39.951610	Query	SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'sql_practice' AND TABLE_NAME = 'customers'
+2026-11-10 21:13:39.949059	Query	select @@collation_database
+2026-11-10 21:13:39.948852	Query	use `sql_practice`
+2026-11-10 21:13:39.948277	Query	SELECT /*!40001 SQL_NO_CACHE */ * FROM `customers`
+2026-11-10 21:13:39.947200	Query	show fields from `customers`
+2026-11-10 21:13:39.945080	Query	show fields from `customers`
+2026-11-10 21:13:39.944464	Query	show create table `customers`
+2026-11-10 21:13:39.942139	Query	show table status like 'customers'
+2026-11-10 21:13:39.940839	Query	show tables
+2026-11-10 21:13:39.940597	Query	SAVEPOINT sp
+2026-11-10 21:13:39.934761	Query	SELECT DISTINCT TABLESPACE_NAME, FILE_NAME, LOGFILE_GROUP_NAME, EXTENT_SIZE, INITIAL_SIZE, ENGINE FROM INFORMATION_SCHEMA.FILES WHERE FILE_TYPE = 'DATAFILE' AND TABLESPACE_NAME IN (SELECT DISTINCT TABLESPACE_NAME FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_SCHEMA IN ('sql_practice')) ORDER BY TABLESPACE_NAME, LOGFILE_GROUP_NAME
+2026-11-10 21:13:39.928911	Query	SELECT LOGFILE_GROUP_NAME, FILE_NAME, TOTAL_EXTENTS, INITIAL_SIZE, ENGINE, EXTRA FROM INFORMATION_SCHEMA.FILES WHERE ENGINE = 'ndbcluster' AND FILE_TYPE = 'UNDO LOG' AND FILE_NAME IS NOT NULL AND LOGFILE_GROUP_NAME IS NOT NULL AND LOGFILE_GROUP_NAME IN (SELECT DISTINCT LOGFILE_GROUP_NAME FROM INFORMATION_SCHEMA.FILES WHERE ENGINE = 'ndbcluster' AND FILE_TYPE = 'DATAFILE' AND TABLESPACE_NAME IN (SELECT DISTINCT TABLESPACE_NAME FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_SCHEMA IN ('sql_practice'))) GROUP BY LOGFILE_GROUP_NAME, FILE_NAME, ENGINE, TOTAL_EXTENTS, INITIAL_SIZE ORDER BY LOGFILE_GROUP_NAME
+2026-11-10 21:13:39.928583	Query	UNLOCK TABLES
+2026-11-10 21:13:39.928337	Query	START TRANSACTION /*!40100 WITH CONSISTENT SNAPSHOT */
+2026-11-10 21:13:39.920003	Query	/*!80000 SET SESSION information_schema_stats_expiry=0 */
+2026-11-10 21:13:39.919831	Query	/*!40103 SET TIME_ZONE='+00:00' */
+2026-11-10 21:13:39.919693	Query	/*!40100 SET @@SQL_MODE='' */
+2026-11-10 21:13:31.029501	Query	INSERT INTO orders (customer_id, order_date, amount, status) VALUES\n  (1, '2026-10-01', 1500.00, 'paid'), (1, '2026-10-05', 2300.50, 'paid'),\n  (2, '2026-10-03', 800.00, 'new'), (3, '2026-10-07', 4200.00, 'paid'),\n  (3, '2026-10-10', 1100.00, 'cancelled'), (4, '2026-10-12', 950.00, 'new')
+2026-11-10 21:13:30.234385	Query	INSERT INTO customers (name, email, city) VALUES\n  ('Иван Иванов', 'ivan@example.com', 'Москва'),\n  ('Пётр Петров', 'petr@example.com', 'Санкт-Петербург'),\n  ('Мария Сидорова', 'maria@example.com', 'Москва'),\n  ('Алексей Смирнов', 'alex@example.com', 'Казань'),\n  ('Ольга Кузнецова', 'olga@example.com', 'Новосибирск')
+2026-11-10 21:13:30.154564	Query	CREATE TABLE orders (\n    id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT NOT NULL,\n    order_date DATE NOT NULL, amount DECIMAL(10, 2) NOT NULL,\n    status VARCHAR(20) DEFAULT 'new', FOREIGN KEY (customer_id) REFERENCES customers(id)\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-10 21:13:30.078775	Query	CREATE TABLE customers (\n    id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100) NOT NULL,\n    email VARCHAR(100) NOT NULL UNIQUE, city VARCHAR(100),\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-10 21:13:30.054161	Query	show tables
+2026-11-10 21:13:30.048664	Query	show databases
+2026-11-10 21:13:30.029608	Query	CREATE DATABASE sql_practice CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
