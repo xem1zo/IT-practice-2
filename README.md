@@ -24,3 +24,7 @@
 ## 📸 Скриншоты результатов
 ![Скриншот 1: Таблицы customers и orders](screen3.png)
 ![Скриншот 2: Лог через VIEW](screen4.png)
+
+## 📸 Скриншоты результатов
+![Скриншот 1: Таблицы customers и orders](screen3.png)
+![Скриншот 2: Лог через VIEW](screen4.png)
