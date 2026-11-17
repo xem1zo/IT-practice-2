@@ -20,3 +20,7 @@
 * **`dump_clean.sql`** — дамп БД.
 * **`my_actions_export.log`** — лог действий.
 * **`README.md`** — описание.
+
+## 📸 Скриншоты результатов
+![Скриншот 1: Таблицы customers и orders](screen3.png)
+![Скриншот 2: Лог через VIEW](screen4.png)
